@@ -1,0 +1,290 @@
+package colas;
+
+import java.util.Scanner;
+
+//  Sandra 
+
+public class Colas {
+
+    public static void main(String[] args) {
+
+        int opci1;
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("\n》》》Seleccione que programa desea utilizar《《《\n");
+        System.out.print("1. Programa 1\n");
+        System.out.print("2. Programa 2\n");
+        System.out.print("3. Programa 3\n");
+        System.out.print("4. Programa 4\n");
+        opci1 = entrada.nextInt();
+        switch (opci1) {
+            case 1:
+                ////////////////////////////////// 
+                char v[] = new char[26]; //Vector de tipo caracter 26 porque son las letras del abecedario
+                int tope = 26;
+                // colasUno C = new colasUno();
+                Colas C = new Colas();
+                int opt = 0;
+                ////////////////////////////////// 
+                do {
+                    System.out.println("1 Llenar\n"
+                            + "2 Mostrar\n"
+                            + "3 Eliminar\n"
+                            + "4 Agregar\n");
+
+                    switch (opt = entrada.nextInt()) {
+                        case 1: // este case es de llenar solo llenar 
+                            char letra = 'A';  //empezar desde letra A
+                            for (int a = 0; a < tope; a++) {
+
+                                v[a] = letra;   // vector en posicion a , almacena el valor de letra
+                                letra++; //incrementa
+                            }
+                            System.out.println("Agregados " + tope + " elementos a la cola");
+                            break;
+                        case 2:// este case es mostrar solo mostrar 
+                            if (tope >= 0) {   // si la cola tiene por lo menos un elemento hara
+                                // si tope es mayor o igual a 0 mostrar la letra
+                                for (int a = 0; a < tope; a++) {
+                                    System.out.println(a + " . " + v[a]);
+                                }
+                            } else { //Si esto no se cumple va a enviar el mensaje de cola vacia
+                                System.out.println("cola vacia");
+                            }
+                            break;
+                        case 3: // este es de eliminar                   
+                            if (tope > 0) {
+                                int w = 1;//2
+                                System.out.println("dato " + v[w - 1] + " eliminado");
+                                tope--;//25
+                                for (int a = 0; a < tope; a++) {
+                                    v[a] = v[w];
+                                    w++;//w=4
+                                }
+                            } else {
+                                System.out.println("no hay datos para eliminar");
+                            }
+                            break;
+                        case 4: // ESTE ES DE AGREGAR 
+                            System.out.println("ingrese la letra");
+                            char w = entrada.next().charAt(0);
+                            if (tope < 26) { //si hay un espacio libre agregar el dato que dijite el usuario 
+                                v[tope] = w;
+                                System.out.println("elemento agregado en posicion: " + tope);
+                                tope++;
+                            } else {
+                                System.out.println("cola llena");
+                            }
+                            break;
+                    }
+                } while (opt != 5);
+
+                break; // este break es del primer programa que se tiene el switch principal
+
+            case 2:
+                ///////////////////////////////////////////////
+                char x[] = new char[26]; //Vector de tipo caracter 26 porque son las letras del abecedario
+                int tope2 = 26;
+
+                //////////////////////////////////////////////  
+                do {
+                    System.out.println("1 Llenar Random\n"
+                            + "2 Mostrar\n"
+                            + "3 Eliminar\n"
+                            + "4 Agregar\n");
+                    switch (opt = entrada.nextInt()) {
+
+                        case 1:
+                            char abecedario = 'A';
+                            for (int k = 0; k < tope2; k++) {
+
+                                x[k] = (char) (Math.random() * 26 + 'A');
+                                abecedario++;
+                            }
+                            System.out.println("Agregados " + tope2 + " datos random a la cola");
+                            break;
+                        case 2:
+                            if (tope2 >= 0) {// si la cola tiene por lo menos un elemento hara
+                                // si tope es mayor o igual a 0 mostrar la letra
+                                for (int k = 0; k < tope2; k++) {
+                                    System.out.println(k + " . " + x[k]);
+                                }
+                            } else { //Si esto no se cumple va a enviar el mensaje de cola vacia
+                                System.out.println("cola vacia");
+                            }
+                            break;
+
+                        case 3:
+                            if (tope2 > 0) {
+                                int w = 1;//2
+                                System.out.println("dato " + x[w - 1] + " eliminado");
+                                tope2--;//25
+                                for (int a = 0; a < tope2; a++) {
+                                    x[a] = x[w]; // V=[ B C D E F G H I #]
+                                    //     0 1 2 3 4 5 6 7 8
+                                    w++;//w=4
+                                }
+                            } else {
+                                System.out.println("no hay datos para eliminar");
+                            }
+                            break;
+
+                        case 4:
+                            System.out.println("ingrese la letra");
+                            char w = entrada.next().charAt(0);
+
+                            if (tope2 < 26) { //si hay un espacio libre agregar el dato que dijite el usuario 
+                                x[tope2] = w;
+                                System.out.println("elemento agregado en posicion: " + tope2);
+                                tope2++;
+                            } else {
+                                System.out.println("cola llena");
+                            }
+                            break;
+                    }
+                } while (opt != 5);
+                break;  // este break es del segundo case MAIN!
+
+            case 3:
+                int opci = 0;
+
+                System.out.println("Introduce el tamaño de tus pilas");
+
+                Scanner sc = new Scanner(System.in);
+
+                int longi = sc.nextInt();
+
+                System.out.println("Las pilas se crearón sitisfactoriamente \n");
+
+                int pi1[] = new int[longi];
+                int pi2[] = new int[longi];
+                int pi3[] = new int[longi];
+
+                do {
+
+                    System.out.println("/*1 llenar pila A  y pila B */ \n"
+                            + "2 Mostrar pila A y B \n"
+                            + "3 Unir A y B\n"
+                            + "4 Mostrar pila C \n"
+                            + "5 Eliminar todas las pilas \n"
+                            + "6 Salir \n");
+
+                    opci = sc.nextInt();
+                    switch (opci) {
+
+                        case 1:
+
+                            for (int i = 0; i < pi1.length; i++) {
+                                pi1[i] = (int) (Math.random() * 100 + 1);
+                                pi2[i] = (int) (Math.random() * (200 - 100) + 100);
+                            }
+                            System.out.println("Las colas se han llenado satisfactoriamente");
+                            break;
+
+                        case 2:
+                            for (int i = 0; i < pi1.length; i++) {
+                                System.out.println("Este es el dato de la pila A\n" + pi1[i]);
+                                System.out.println("Este es el dato de la pila B\n " + pi2[i]);
+                            }
+                            break;
+
+                        case 3:
+                            int j = 0;
+                            for (int i = pi1.length - 1; i >= 0; i--) {
+                                pi3[j] = pi1[i] + pi2[i];
+                                j++;
+                                System.out.println("Se han sumado satisfactoriamente\n");
+                            }
+                            break;
+
+                        case 4:
+
+                            for (int i = 0; i < pi1.length; i++) {
+                                System.out.println("La suma de las pilas A y B es : \n" + pi3[i]);
+                            }
+                            break;
+
+                        case 5:
+                            for (int i = 0; i < pi1.length; i++) {
+                                pi1[i] = 0;
+                                pi2[i] = 0;
+                                pi3[i] = 0;
+                            }
+                            //Mensaje para indicar la eliminación 
+                            System.out.println("Se han eliminado los datos correctamente\n ");
+                            break;
+
+                        case 6:
+
+                            System.out.print("Adios");
+                            System.exit(0);
+                            break;
+                    }
+
+                } while (opci != 7);
+                break;
+                
+            case 4:
+                   ////////////////////////////////// 
+                char p[] = new char[26]; //Vector de tipo caracter 26 porque son las letras del abecedario
+                int tope5 = 26;
+                // colasUno C = new colasUno();
+
+                int opt4 = 0;
+                ////////////////////////////////// 
+                do {
+                    System.out.println("1 Llenar\n"
+                            + "2 Mostrar\n"
+                            + "3 Eliminar\n"
+                            + "4 Agregar\n");
+
+                    switch (opt4 = entrada.nextInt()) {
+                        case 1: // este case es de llenar solo llenar 
+                            char letra = 'A';  //empezar desde letra A
+                            for (int a = 0; a < tope5; a++) {
+
+                                p[a] = letra;   // vector en posicion a , almacena el valor de letra
+                                letra++; //incrementa
+                            }
+                            System.out.println("Agregados " + tope5 + " elementos a la cola");
+                            break;
+                        case 2:// este case es mostrar solo mostrar 
+                            if (tope5 >= 0) {   // si la cola tiene por lo menos un elemento hara
+                                // si tope es mayor o igual a 0 mostrar la letra
+                                for (int a = 0; a < tope5; a++) {
+                                    System.out.println(a + " . " + p[a]);
+                                }
+                            } else { //Si esto no se cumple va a enviar el mensaje de cola vacia
+                                System.out.println("cola vacia");
+                            }
+                            break;
+                        case 3: // este es de eliminar                   
+                            if (tope5 > 0) {
+                                int w = 1;//2
+                                System.out.println("dato " + p[w - 1] + " eliminado");
+                                tope5--;//25
+                                for (int a = 0; a < tope5; a++) {
+                                    p[a] = p[w];
+                                    w++;//w=4
+                                }
+                            } else {
+                                System.out.println("no hay datos para eliminar");
+                            }
+                            break;
+                        case 4: // ESTE ES DE AGREGAR 
+                            System.out.println("ingrese la letra");
+                            char w = entrada.next().charAt(0);
+                            if (tope5 < 26) { //si hay un espacio libre agregar el dato que dijite el usuario 
+                                p[tope5] = w;
+                                System.out.println("elemento agregado en posicion: " + tope5);
+                                tope5++;
+                            } else {
+                                System.out.println("cola llena");
+                            }
+                            break;
+                    }
+                } while (opt4 != 5);               
+                break;
+
+        }
+    }
+}
